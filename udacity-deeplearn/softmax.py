@@ -50,6 +50,9 @@ def softmax(x):
     # return the array of p-values
     return np.array(outputOuter)
 
+    """solution... wow I have a long way to go lol"""
+    return np.exp(x) / np.sum(np.exp(x), axis=0)
+
 print(softmax(scores))
 
 # Plot softmax curves
