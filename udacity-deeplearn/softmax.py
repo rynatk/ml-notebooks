@@ -1,43 +1,7 @@
 """Softmax."""
 
-scores = [[3.0, 5.0], [1.0, 3.0], [0.3, 0.2]]
-
-import numpy as np
-
-def softmax(x):
-    """Compute softmax values for each sets of scores in x."""
-    outputOuter = []
-    
-    # get the sum of the entire multi-dimensional array
-    total = np.sum(x)
-    
-    # iterate through the columns
-    for i in range (0, len(x)):
-        #iterate through the rows or calculate
-        if type(i) is list:
-            outputInner = []
-            for j in range (0, len(i)):
-                outputInner.append(i[j]/total)
-            outputOuter.append(j)
-        else:
-            outputOuter.append(x[i]/total)
-    return np.array(outputOuter)
-
-print(softmax(scores))
-
-# Plot softmax curves
-import matplotlib.pyplot as plt
-x = np.arange(-2.0, 6.0, 0.1)
-scores = np.vstack([x, np.ones_like(x), 0.2 * np.ones_like(x)])
-
-plt.plot(x, softmax(scores).T, linewidth=2)
-plt.show()
-
-# V2 wow holy fuck this code is shit
- 
-"""Softmax."""
-
-scores = [[3.0, 5.0], [1.0, 3.0], [0.3, 0.2]]
+scores1 = [[3.0, 5.0], [1.0, 3.0], [0.3, 0.2]]
+scores2 = [3.0, 1.0, 0.1, 4.5]
 
 import numpy as np
 
@@ -46,6 +10,7 @@ def softmax(x):
     outputOuter = []
     
     twoDimensional = type(x[0]) is list
+    print twoDimensional
     
     # get the sum of each column of the array
     # ...assuming all elements will have the dimensions of the first element
@@ -73,12 +38,13 @@ def softmax(x):
             outputOuter.append(x[i]/totals[0])
     return np.array(outputOuter)
 
-print(softmax(scores))
+print(softmax(scores1))
+print(softmax(scores2))
 
 # Plot softmax curves
-import matplotlib.pyplot as plt
-x = np.arange(-2.0, 6.0, 0.1)
-scores = np.vstack([x, np.ones_like(x), 0.2 * np.ones_like(x)])
+# import matplotlib.pyplot as plt
+# x = np.arange(-2.0, 6.0, 0.1)
+# scores = np.vstack([x, np.ones_like(x), 0.2 * np.ones_like(x)])
 
-plt.plot(x, softmax(scores).T, linewidth=2)
-plt.show()
+# plt.plot(x, softmax(scores).T, linewidth=2)
+# plt.show()
